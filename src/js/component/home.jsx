@@ -11,6 +11,11 @@ const Home = () => {
 
 	//FETCH
 
+	const apiURL = "https://assets.breatheco.de/apis/fake/todos/user/heylga"
+	fetch (apiURL)
+	.then (res => res.json())
+	.then(myJSONREsponse => console.log("My JSON Tasks response", myJSONREsponse))
+
 	//Functions addItem and RemoveItem
 
 	const addTask = (e) => {
