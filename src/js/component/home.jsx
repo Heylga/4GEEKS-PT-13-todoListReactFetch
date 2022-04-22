@@ -11,10 +11,13 @@ const Home = () => {
 
 	//FETCH
 
-	const apiURL = "https://assets.breatheco.de/apis/fake/todos/user/heylga"
-	fetch (apiURL)
-	.then (res => res.json())
-	.then(myJSONREsponse => console.log("My JSON Tasks response", myJSONREsponse))
+	const apiURL = "https://assets.breatheco.de/apis/fake/todos/user/heylga";
+	fetch(apiURL)
+		.then((res) => res.json())
+		.then((data) => console.log("My JSON Tasks response", data))
+		.catch((erro) => {
+			console.log("Oops something went wrong");
+		});
 
 	//Functions addItem and RemoveItem
 
@@ -27,12 +30,6 @@ const Home = () => {
 		e.preventDefault();
 		setTasks([...Task, { Text: InputMessage, id: Math.random() * 1000 }]);
 		SetInputMessage("");
-	};
-
-	const onUserTyping = (e) => {
-		if (e.keyCode === 13) {
-			console.log("---->", e.target.value);
-		}
 	};
 
 	function removeItem(item) {
