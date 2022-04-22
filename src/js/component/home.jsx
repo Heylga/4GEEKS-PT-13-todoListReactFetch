@@ -20,7 +20,7 @@ const Home = () => {
 
 	const submitTask = (e) => {
 		e.preventDefault();
-		setTasks([...Task, { text: InputMessage, id: Math.random() * 1000 }]);
+		setTasks([...Task, { Text: InputMessage, id: Math.random() * 1000 }]);
 		SetInputMessage("");
 	};
 
@@ -30,7 +30,11 @@ const Home = () => {
 		}
 	};
 
-	const removeItem = (e) => {};
+	function removeItem(item) {
+		const newTask = Task.filter((key) => key !== item);
+		setTasks(newTask);
+		console.log(newTask);
+	}
 
 	//RETURN
 
@@ -41,15 +45,30 @@ const Home = () => {
 				<input
 					type="text"
 					className="todo-input border d-flex justify-content-center"
-					onChange={addTask}
-					value={InputMessage}
 					placeholder="What needs to be done?"
-					onKeyDown={onUserTyping}></input>
-				<ul className="list-group d-flex justify-content-center">
-					<li className="list-group-item d-flex justify-content-center"></li>
-				</ul>
-				<button className="trash"></button>
+					onChange={addTask}
+					value={InputMessage}></input>
+				<button onClick={submitTask}></button>
 			</form>
+			<ul>
+				{Task.map((item, index) => {
+					return (
+						<li
+							className="list-group-item d-flex justify-content-center"
+							key={index}>
+							{item.label}
+							<button
+								className="btn btn-light"
+								type="button"
+								onClick={() => {
+									removeItem(item);
+								}}>
+								X
+							</button>
+						</li>
+					);
+				})}
+			</ul>
 		</div>
 	);
 };
