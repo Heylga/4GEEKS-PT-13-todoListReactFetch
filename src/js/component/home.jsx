@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 //include images into your bundle
 import rigoImage from "../../img/rigo-baby.jpg";
@@ -11,13 +11,23 @@ const Home = () => {
 
 	//FETCH
 
-	const apiURL = "https://assets.breatheco.de/apis/fake/todos/user/heylga";
+	const apiURL = "https://assets.breatheco.de/apis/fake/todos/user/deimian";
 	fetch(apiURL)
 		.then((res) => res.json())
 		.then((data) => console.log("My JSON Tasks response", data))
 		.catch((erro) => {
 			console.log("Oops something went wrong");
 		});
+
+	useEffect(() => {
+		fetch("https://assets.breatheco.de/apis/fake/todos/user/deimian")
+			.then((res) => res.json())
+			.then((res) => {
+				setTasks(res);
+				console.log(res);
+			})
+			.catch((error) => console.log("Oops! Something went wrong", error));
+	}, []);
 
 	//Functions addItem and RemoveItem
 
