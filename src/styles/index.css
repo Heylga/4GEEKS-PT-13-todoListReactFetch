@@ -1,12 +1,76 @@
+button {     
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;   
+}
 
-/* 
 
-    You can write your own styles here...
-    
-    
-    ...Or you can use the import command to include 
-    other sylesheets into your bunde as well, e.j:
-    
-    import 'relative/path/to/stylesheet.scss';
+h5 {
+    font-style: italic;
+    color:rgb(164, 162, 162);
+    background-color: white;
+}
 
-*/
+.bottom {
+    height: 5px;
+    margin-left: 3px;
+    margin-right: 3px;
+    padding: 0;
+}
+
+.bottom-leaf {
+    height: 5px;
+    margin-left: 7px;
+    margin-right: 7px;
+    padding: 0;
+}
+.bottom-last {
+    height: 5px;
+    margin-left: 11px;
+    margin-right: 11px;
+    padding: 0;
+}
+::placeholder {
+    color: rgb(152, 152, 152);
+}
+
+.list-group-item {
+
+    color: rgb(152, 152, 152);
+    width: 390px;
+}
+.footer {
+    margin-left: 568px;
+    margin-left: 580px;
+}
+
+.todo-list  {
+    margin-left: -12px;
+}
+
+button {     
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;   
+}
+.btn:hover {
+   color: red;
+   background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    overflow: hidden; 
+    float: right;
+}
+.todo-button {
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    overflow: hidden; 
+}
+.task {
+    margin-left: 580px;
+}
