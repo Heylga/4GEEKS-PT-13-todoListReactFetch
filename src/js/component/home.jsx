@@ -11,9 +11,6 @@ const Home = () => {
 
 	//FETCH
 
-	// const apiURL = "https://assets.breatheco.de/apis/fake/todos/user/deimian";
-	// fetch(apiURL)
-
 	var requestOptions = {
 		method: "GET",
 		redirect: "follow",
@@ -27,12 +24,6 @@ const Home = () => {
 		.then((result) => console.log(result))
 		.catch((error) => console.log("error", error));
 
-	// .then((res) => res.json())
-	// .then((data) => console.log("My JSON Tasks response", data))
-	// .catch((error) => {
-	// 	console.log("Oops something went wrong");
-	// });
-
 	useEffect(() => {
 		fetch("https://assets.breatheco.de/apis/fake/todos/user/heylga")
 			.then((res) => res.json())
@@ -41,6 +32,28 @@ const Home = () => {
 				console.log(res);
 			})
 			.catch((error) => console.log("Oops! Something went wrong", error));
+	}, []);
+
+	useEffect(() => {
+		var requestOptions = {
+			method: "PUT",
+			headers: myHeaders,
+			redirect: "follow",
+		};
+
+		var myHeaders = new Headers();
+		myHeaders.append("Content-Type", "application/json");
+
+		fetch(
+			"https://assets.breatheco.de/apis/fake/todos/user/heylga",
+			requestOptions
+		)
+			.then((response) => response.text())
+			.then((res) => {
+				submitTask(res);
+				console.log(res);
+			})
+			.catch((error) => console.log("error", error));
 	}, []);
 
 	//Functions addItem and RemoveItem
