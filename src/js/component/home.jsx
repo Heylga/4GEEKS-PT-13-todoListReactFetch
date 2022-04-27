@@ -11,13 +11,27 @@ const Home = () => {
 
 	//FETCH
 
-	const apiURL = "https://assets.breatheco.de/apis/fake/todos/user/deimian";
-	fetch(apiURL)
-		.then((res) => res.json())
-		.then((data) => console.log("My JSON Tasks response", data))
-		.catch((erro) => {
-			console.log("Oops something went wrong");
-		});
+	// const apiURL = "https://assets.breatheco.de/apis/fake/todos/user/deimian";
+	// fetch(apiURL)
+
+	var requestOptions = {
+		method: "GET",
+		redirect: "follow",
+	};
+
+	fetch(
+		"https://assets.breatheco.de/apis/fake/todos/user/deimian",
+		requestOptions
+	)
+		.then((response) => response.text())
+		.then((result) => console.log(result))
+		.catch((error) => console.log("error", error));
+
+	// .then((res) => res.json())
+	// .then((data) => console.log("My JSON Tasks response", data))
+	// .catch((error) => {
+	// 	console.log("Oops something went wrong");
+	// });
 
 	useEffect(() => {
 		fetch("https://assets.breatheco.de/apis/fake/todos/user/deimian")
@@ -38,7 +52,7 @@ const Home = () => {
 
 	const submitTask = (e) => {
 		e.preventDefault();
-		setTasks([...Task, { Text: InputMessage, id: Math.random() * 1000 }]);
+		setTasks([...Task, { label: InputMessage, id: Math.random() * 1000 }]);
 		SetInputMessage("");
 	};
 
@@ -73,11 +87,11 @@ const Home = () => {
 			</form>
 
 			<ul className="todo-list list-group ">
-				{Task.map((item, index) => {
+				{Task.map((item, label) => {
 					return (
 						<li
 							className="task d-flex justify-content-center list-group-item"
-							key={index}>
+							key={label}>
 							{item.label}
 							<button
 								className="btn btn-light"
