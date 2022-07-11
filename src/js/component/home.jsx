@@ -56,6 +56,29 @@ const Home = () => {
 			.catch((error) => console.log("error", error));
 	}, []);
 
+
+	useEffect(() => {
+		var requestOptions = {
+			method: "POST",
+			headers: myHeaders,
+			redirect: "follow",
+		};
+
+		var myHeaders = new Headers();
+		myHeaders.append("Content-Type", "application/json");
+
+		fetch(
+			"https://assets.breatheco.de/apis/fake/todos/user/heylga",
+			requestOptions
+		)
+			.then((response) => response.text())
+			.then((res) => {
+				submitTask(res);
+				console.log(res);
+			})
+			.catch((error) => console.log("error", error));
+	}, []);
+
 	//Functions addItem and RemoveItem
 
 	const addTask = (e) => {
